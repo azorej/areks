@@ -13,3 +13,8 @@ BaseObject::~BaseObject()
 {
     master_t::subsystem<ObjectManager>().removeObject(this);
 }
+
+void BaseObject::destroy()
+{
+    delete this;
+}

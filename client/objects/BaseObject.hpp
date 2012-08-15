@@ -11,6 +11,9 @@ public:
     
     virtual void draw() = 0;
     
+    //possible remake this for lazy destruction
+    void destroy();
+    
 };
 
 #endif

@@ -22,6 +22,9 @@ public:
         return b2Vec2(48.f, 32.f); // we should create world and background with corresponding propotions
     }
     
+    //don't call this method manually!
+    void step( float dt );
+    
 private:
     std::unique_ptr<b2World> _b2World_ptr;
 };

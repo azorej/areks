@@ -27,22 +27,24 @@ Loop::Loop()
 
 void Loop::resumeTime()
 {
-    cc::CCScheduler::pauseTarget(&_time_loop);
+    cc::CCScheduler::resumeTarget(&_time_loop);
 }
 
 void Loop::pauseTime()
 {
-    cc::CCScheduler::resumeTarget(&_time_loop);
+    cc::CCScheduler::pauseTarget(&_time_loop);
 }
 
 void Loop::resumeGame()
 {
-    cc::CCScheduler::pauseTarget(&_view_loop);
+    cc::CCScheduler::resumeTarget(&_view_loop);
+    this->resumeTime();
 }
 
 void Loop::pauseGame()
 {
-    cc::CCScheduler::resumeTarget(&_view_loop);
+    cc::CCScheduler::pauseTarget(&_view_loop);
+    this->pauseTime();
 }
 
 void Loop::TimeLoop_t::tick(float t)
@@ -59,6 +61,8 @@ void Loop::TimeLoop_t::tick(float t)
 
 void Loop::ViewLoop_t::update( float t )
 {
+    master_t::subsystem<Physics>().step( float dt );
+    
     auto objects = master_t::subsystem<ObjectManager>().getObjects();
     auto it = objects.begin();
     auto end = objects.end();

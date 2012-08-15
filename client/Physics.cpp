@@ -15,3 +15,11 @@ b2World* Physics::worldEngine()
 {
     return _b2World_ptr.get();
 }
+
+void Physics::step( float dt )
+{
+    static int velocityIterations = 8;
+    static int positionIterations = 3;
+    
+    _b2World_ptr->Step( dt, velocityIterations, positionIterations );
+}
