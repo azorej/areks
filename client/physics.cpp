@@ -1,4 +1,4 @@
-#include "physics.hpp"
+#include "Physics.hpp"
 
 void Physics::start() {}
 void Physics::stop() {}

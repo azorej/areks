@@ -2,7 +2,6 @@
 #define _AREKS_PHYSICS_HPP_
 
 # include "subsystem.hpp"
-# include "primitives.hpp"
 
 # include <Box2D/Box2D.h>
 
@@ -18,9 +17,9 @@ public:
     b2World* worldEngine();
     
     //temp for scene navigation logic
-    pr::Vec2 worldSize() const
+    b2Vec2 worldSize() const
     {
-        return pr::Vec2(48.f, 32.f); // we should create world and background with corresponding propotions
+        return b2Vec2(48.f, 32.f); // we should create world and background with corresponding propotions
     }
     
     //don't call this method manually!
